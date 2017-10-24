@@ -4,7 +4,7 @@
 #include <time.h> 	//time for srand()
 #include <std_msgs/Int16MultiArray.h>
 #include <random>	
-#include <chrono>
+#include <chrono>	//for endl
 
 std_msgs::Int16MultiArray mymessage;
 std_msgs::Int16MultiArray my_family;
@@ -72,11 +72,12 @@ void electionmymessage(const std_msgs::Int16MultiArray& msg){
 	if(msg.data[0] != mymessage.data[0]  && mymessage.data[2]==0) {	
 		//enter this loop only if everybody finishes the previous round
 		//Prevents reading self UID from the message pool
+		
 		if(msg.data[0] == my_family.data[1] || msg.data[0] == my_family.data[3] || msg.data[0] == my_family.data[5] ){	
 			//Prevent listening to unauthorised instances (should only listen to corresponding parents as described in the graph)
 			
 			ROS_INFO_STREAM("My UID: " << mymessage.data[0] 
-							//<< ", Round no: " << nround 
+							<< ", Round no: " << nround 
 							<< "		higest known UID received from neighbour(" << msg.data[0] << "): " << msg.data[1] ); 
 			ros::param::set("~round",nround);
 			
@@ -85,13 +86,13 @@ void electionmymessage(const std_msgs::Int16MultiArray& msg){
 				//(only the UIDs authorised for access (as defined in the graph) will pass the previous filter and arrive at this stage)
 				
 				ROS_INFO_STREAM("My UID: " << mymessage.data[0] 
-								//<< ", Round no: " << nround 
+								<< ", Round no: " << nround 
 								<< "		updating my higest known UID to: " << msg.data[1] << std::endl ); 
 				mymessage.data[1]=msg.data[1];
 			}
 			else {
 				ROS_INFO_STREAM("My UID: " << mymessage.data[0] 
-								//<< ", Round no: " << nround 
+								<< ", Round no: " << nround 
 								<< "		ignoring the higest known UID(" << msg.data[1] << ") passed by neighbour" << std::endl);	
 			}	
 			leaderCheck(msg);
@@ -104,7 +105,7 @@ void leaderCheck(const std_msgs::Int16MultiArray& msg){
 	if(mymessage.data[0] == msg.data[1] && nround == diam){
 		//when my UID is equal to neighbour's max known UID and the no:of rounds reached diameter. then self-proclaim myself as leader of the gang
 		ROS_INFO_STREAM("My UID: " << mymessage.data[0] 
-						//<< ", Round no: " << nround 
+						<< ", Round no: " << nround 
 						<< "		Yahoo! I'm the leader " << std::endl ); 
 		mymessage.data[2]=2;
 		//ros::shutdown();
@@ -112,7 +113,7 @@ void leaderCheck(const std_msgs::Int16MultiArray& msg){
 	else if(mymessage.data[2]==0 && msg.data[2]!=0 && nround>=diam ) {
 		mymessage.data[2]=1;
 		ROS_INFO_STREAM("My UID: " << mymessage.data[0] 
-							//<< ", Round no: " << nround 
+							<< ", Round no: " << nround 
 							<< "		I am not the leader " << std::endl ); 
 		//ros::shutdown();
 	}
