@@ -139,8 +139,8 @@ void roundFinishCheck(const std_msgs::Int16MultiArray& msg) {
 }
 
 void leaderCheck(const std_msgs::Int16MultiArray& msg){
-	if(mymessage.data[0] == msg.data[1] && nround == diam){
-		//when my UID is equal to neighbour's max known UID and the no:of rounds reached diameter. then self-proclaim myself as leader of the gang
+	if(mymessage.data[1] == msg.data[1] && nround == diam){
+		//when my max known UID is equal to neighbour's max known UID and the no:of rounds reached diameter. then self-proclaim myself as leader of the gang
 		ROS_INFO_STREAM("My UID: " << mymessage.data[0] 
 						<< ", Round no: " << nround 
 						<< "		Yahoo! I'm the leader " << std::endl ); 
