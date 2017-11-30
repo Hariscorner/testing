@@ -1,0 +1,67 @@
+<launch>
+	<node pkg="leader_election" type="leader_election_node" name="A" output="screen" launch-prefix="xterm -bg Teal -geometry 120x31+0+0 -e ">
+		<param name="UID" value="1" />
+		<param name="child1" value="3" />
+		<param name="child2" value="4" />
+		<param name="parent1" value="3" />
+		<param name="parent2" value="2" />
+		<param name="parent3" value="0" />
+		<param name="diam" value="4" />
+		<param name="round" value="1" />
+		<param name="pmc" value="0" />
+	</node>
+	<node pkg="leader_election" type="leader_election_node" name="B" output="screen" launch-prefix="xterm -bg Teal -geometry 120x31+100+50 -e ">
+		<param name="UID" value="2" />
+		<param name="child1" value="1" />
+		<param name="child2" value="4" />
+		<param name="child3" value="5" />
+		<param name="parent1" value="5" />
+		<param name="parent2" value="0" />
+		<param name="parent3" value="0" />
+		<param name="diam" value="4" />
+		<param name="round" value="1" />
+		<param name="pmc" value="0" />
+	</node>
+	<node pkg="leader_election" type="leader_election_node" name="C" output="screen" launch-prefix="xterm -bg Teal -geometry 120x31+200+100 -e ">
+		<param name="UID" value="3" />
+		<param name="child1" value="1" />
+		<param name="parent1" value="1" />
+		<param name="parent2" value="6" />
+		<param name="parent3" value="0" />
+		<param name="diam" value="4" />
+		<param name="round" value="1" />
+		<param name="pmc" value="0" />
+	</node>
+	<node pkg="leader_election" type="leader_election_node" name="D" output="screen" launch-prefix="xterm -bg Teal -geometry 120x31+300+150 -e ">
+		<param name="UID" value="4" />
+		<param name="child1" value="5" />
+		<param name="parent1" value="1" />
+		<param name="parent2" value="2" />
+		<param name="parent3" value="6" />
+		<param name="diam" value="4" />
+		<param name="round" value="1" />
+		<param name="pmc" value="0" />
+	</node>
+	<node pkg="leader_election" type="leader_election_node" name="E" output="screen" launch-prefix="xterm -bg Teal -geometry 120x31+400+200 -e ">
+		<param name="UID" value="5" />
+		<param name="child1" value="2" />
+		<param name="child2" value="6" />
+		<param name="parent1" value="2" />
+		<param name="parent2" value="4" />
+		<param name="parent3" value="0" />
+		<param name="diam" value="4" />
+		<param name="round" value="1" />
+		<param name="pmc" value="0" />
+	</node>
+	<node pkg="leader_election" type="leader_election_node" name="F" output="screen" launch-prefix="xterm -bg Teal -geometry 120x31+500+250 -e ">
+		<param name="UID" value="6" />
+		<param name="child1" value="3" />
+		<param name="child2" value="4" />
+		<param name="parent1" value="5" />
+		<param name="parent2" value="0" />
+		<param name="parent3" value="0" />
+		<param name="diam" value="4" />
+		<param name="round" value="1" />
+		<param name="pmc" value="0" />
+	</node>
+</launch>
