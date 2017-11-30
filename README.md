@@ -1,5 +1,3 @@
-# testing
+# Leader Election Algorithm
 
-This is the content from the readme file
-
-editing the content for the purpose of testing
+This is an implementation of a decentralised leader lection algorithm (flood max algorithm) in ROS. Since ROS doesn't officially support multi robot systems yet, it was necessary to first simulate such an environment before the algorithm could be applied. Multiple instances of a robot node are created and communication between them happens through the rules defined in a pre-assigned graph (strictly connected graph). The code is written so that you can change the graph through the launch file and that you can run the simulation with any number of robots depending on how many are spawnned in the launch file. In the current form, there are six robots in the simulation and leader is elected based on the one with highest UserID. However, One can configure the profram to choose any other heuristic instead of userid (say, min inter robot distances). 
